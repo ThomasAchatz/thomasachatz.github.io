@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Obmanns Kinder installieren</title>
+<meta name="description" content="So kommst du in 2 Minuten zur Quiz-App Obmanns Kinder – für iPhone und Android.">
+<meta name="theme-color" content="#24412F">
+<link rel="icon" href="/obmanns-kinder/icons/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Zilla+Slab:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #eef1ec; --surface: #fbfcfa; --text: #18201b; --muted: #5d6a61; --border: #d5ddd6;
+    --primary: #24412f; --on-primary: #f4f7f3; --brass: #c49a2c; --brass-soft: #f3e6bf;
+    --warn-soft: #f6dcdc; --warn: #a3262a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111814; --surface: #1a241e; --text: #e7ece8; --muted: #9db0a3; --border: #2c3a31;
+      --primary: #7fb08f; --on-primary: #0f1712; --brass: #d8b04a; --brass-soft: #3a3118;
+      --warn-soft: #3d1f21; --warn: #f08a8d;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 18px/1.55 "Atkinson Hyperlegible", system-ui, sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  main { max-width: 34rem; margin: 0 auto; padding: calc(28px + env(safe-area-inset-top)) 18px 48px; }
+  h1, h2 { font-family: "Zilla Slab", Georgia, serif; line-height: 1.15; margin: 0; }
+  h1 { font-size: 2.2rem; }
+  h2 { font-size: 1.4rem; margin: 32px 0 12px; }
+  .lead { color: var(--muted); margin: 8px 0 24px; }
+  .logo { width: 72px; height: 72px; border-radius: 18px; display: block; margin-bottom: 16px; }
+
+  .switch { display: flex; gap: 6px; padding: 5px; background: var(--surface); border: 1.5px solid var(--border); border-radius: 14px; }
+  .switch button {
+    flex: 1; min-height: 48px; border: 0; border-radius: 10px; background: transparent;
+    color: var(--muted); font: inherit; font-weight: 700; cursor: pointer;
+  }
+  .switch button[aria-selected="true"] { background: var(--primary); color: var(--on-primary); }
+  .detected { font-size: 0.85rem; color: var(--muted); margin: 8px 2px 0; min-height: 1.3em; }
+
+  ol.steps { list-style: none; counter-reset: s; padding: 0; margin: 0; display: grid; gap: 12px; }
+  ol.steps > li {
+    counter-increment: s; position: relative; padding: 14px 16px 14px 60px;
+    background: var(--surface); border: 1.5px solid var(--border); border-radius: 14px;
+  }
+  ol.steps > li::before {
+    content: counter(s); position: absolute; left: 14px; top: 14px; width: 32px; height: 32px;
+    border-radius: 50%; background: var(--primary); color: var(--on-primary);
+    display: grid; place-items: center; font-family: "Zilla Slab", serif; font-weight: 700;
+  }
+  ol.steps p { margin: 0; }
+  ol.steps p + p { margin-top: 6px; }
+  .hint { font-size: 0.9rem; color: var(--muted); }
+  b { font-weight: 700; }
+  .key {
+    display: inline-block; padding: 0 8px; border-radius: 6px; border: 1.5px solid var(--border);
+    background: var(--bg); font-weight: 700; white-space: nowrap;
+  }
+  .btn {
+    display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 10px;
+    min-height: 54px; border-radius: 12px; background: var(--primary); color: var(--on-primary);
+    font-weight: 700; font-size: 1.05rem; text-decoration: none;
+  }
+  .btn.secondary { background: transparent; color: var(--text); border: 1.5px solid var(--border); }
+  .box { padding: 14px 16px; border-radius: 14px; margin-top: 12px; }
+  .box.brass { background: var(--brass-soft); border: 1.5px solid var(--brass); }
+  .box.warn { background: var(--warn-soft); }
+  .box p { margin: 0; }
+  .box p + p { margin-top: 6px; }
+  details { background: var(--surface); border: 1.5px solid var(--border); border-radius: 14px; padding: 0 16px; margin-top: 10px; }
+  summary { cursor: pointer; font-weight: 700; padding: 14px 0; list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; float: right; color: var(--muted); }
+  details[open] summary::after { content: "–"; }
+  details p { margin: 0 0 14px; }
+  [hidden] { display: none !important; }
+  svg.ic { width: 20px; height: 20px; vertical-align: -4px; }
+  footer { margin-top: 36px; color: var(--muted); font-size: 0.9rem; }
+</style>
+</head>
+<body>
+<main>
+  <img class="logo" src="/obmanns-kinder/icons/icon-192.png" alt="">
+  <h1>Obmanns Kinder installieren</h1>
+  <p class="lead">Dauert 2 Minuten. Deinen Benutzernamen und dein Passwort hast du vom Thomas bekommen.</p>
+
+  <div class="switch" role="tablist" aria-label="Welches Handy hast du?">
+    <button role="tab" id="tab-ios" aria-controls="ios" aria-selected="false">iPhone</button>
+    <button role="tab" id="tab-android" aria-controls="android" aria-selected="false">Android</button>
+  </div>
+  <p class="detected" id="detected"></p>
+
+  <!-- ===================== iPhone ===================== -->
+  <section id="ios" role="tabpanel" aria-labelledby="tab-ios" hidden>
+    <div class="box warn" id="not-safari" hidden>
+      <p><b>Du bist gerade nicht in Safari.</b> Das klappt nur mit Safari.</p>
+      <p>Tipp unten auf <b>Link kopieren</b>, öffne <b>Safari</b> und füge den Link oben in die Adresszeile ein.</p>
+      <a class="btn secondary" href="#" id="copy-link">Link kopieren</a>
+    </div>
+
+    <h2>So geht's am iPhone</h2>
+    <ol class="steps">
+      <li>
+        <p>Diese Seite in <b>Safari</b> öffnen (dem Kompass-Symbol).</p>
+        <p class="hint">Hast du den Link in WhatsApp angetippt? Dann oben rechts auf die drei Punkte <span class="key">⋯</span> bzw. das Kompass-Symbol und <b>In Safari öffnen</b> wählen.</p>
+      </li>
+      <li>
+        <p>Auf <b>App öffnen</b> tippen:</p>
+        <a class="btn" href="/obmanns-kinder/">App öffnen</a>
+        <p class="hint" style="margin-top:8px">Danach bist du auf der App-Seite. Dort machst du die nächsten Schritte: <b>Teilen</b> → <b>Zum Home-Bildschirm</b> → <b>Hinzufügen</b>. Merk sie dir kurz oder mach einen Screenshot von dieser Anleitung.</p>
+      </li>
+      <li>
+        <p>Unten in Safari auf das <b>Teilen-Symbol</b> tippen:
+          <span class="key"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M8 7l4-4 4 4M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></svg> Teilen</span>
+        </p>
+        <p class="hint">Siehst du es nicht? Tipp einmal kurz auf die Adressleiste unten, oder auf die drei Punkte <span class="key">⋯</span> und dann auf <b>Teilen</b>.</p>
+      </li>
+      <li>
+        <p>Etwas nach unten wischen und <b>Zum Home-Bildschirm</b> antippen.</p>
+        <p class="hint">Steht dort ein Schalter <b>Als Web-App öffnen</b>: eingeschaltet lassen.</p>
+      </li>
+      <li>
+        <p>Oben rechts auf <b>Hinzufügen</b> tippen.</p>
+      </li>
+      <li>
+        <p>Safari schließen und die App ab jetzt <b>immer über das neue Icon</b> auf dem Home-Bildschirm öffnen.</p>
+      </li>
+      <li>
+        <p>Mit deinem <b>Benutzernamen</b> und <b>Passwort</b> anmelden.</p>
+        <p class="hint">Benutzername klein schreiben, ohne Leerzeichen.</p>
+      </li>
+      <li>
+        <p>Unten auf <b>Profil</b> → <b>Benachrichtigungen</b> einschalten → <b>Erlauben</b>.</p>
+        <p class="hint">Sonst merkst du nicht, wenn dich jemand zum Duell herausfordert.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ===================== Android ===================== -->
+  <section id="android" role="tabpanel" aria-labelledby="tab-android" hidden>
+    <h2>So geht's mit Android</h2>
+    <ol class="steps">
+      <li>
+        <p>App herunterladen:</p>
+        <a class="btn" href="https://github.com/ThomasAchatz/obmanns-kinder/releases/latest/download/obmanns-kinder.apk">App herunterladen</a>
+        <p class="hint" style="margin-top:8px">Kommt eine Warnung „Datei könnte schädlich sein“: <b>Trotzdem herunterladen</b>. Das kommt bei jeder App, die nicht aus dem Play Store ist.</p>
+      </li>
+      <li>
+        <p>Wenn der Download fertig ist, auf <b>Öffnen</b> tippen.</p>
+        <p class="hint">Verpasst? Wisch von oben herunter und tipp auf <b>obmanns-kinder.apk</b>, oder öffne die App <b>Eigene Dateien</b> → <b>Downloads</b>.</p>
+      </li>
+      <li>
+        <p>Fragt das Handy, ob es <b>Apps aus dieser Quelle</b> installieren darf: auf <b>Einstellungen</b> tippen, den Schalter <b>einschalten</b>, dann oben links <b>zurück</b>.</p>
+      </li>
+      <li>
+        <p>Auf <b>Installieren</b> tippen.</p>
+        <p class="hint">Warnt <b>Play Protect</b> vor einer unbekannten App: <b>Weitere Details</b> → <b>Trotzdem installieren</b>.</p>
+      </li>
+      <li>
+        <p>Auf <b>Öffnen</b> tippen. Ab jetzt findest du <b>Obmanns Kinder</b> bei deinen Apps.</p>
+      </li>
+      <li>
+        <p>Mit deinem <b>Benutzernamen</b> und <b>Passwort</b> anmelden.</p>
+        <p class="hint">Benutzername klein schreiben, ohne Leerzeichen.</p>
+      </li>
+      <li>
+        <p>Unten auf <b>Profil</b> → <b>Benachrichtigungen</b> einschalten → <b>Zulassen</b>.</p>
+        <p class="hint">Sonst merkst du nicht, wenn dich jemand zum Duell herausfordert.</p>
+      </li>
+    </ol>
+
+    <h2>Klappt nicht?</h2>
+    <details>
+      <summary>Samsung: „Installation blockiert“ / Auto Blocker</summary>
+      <p><b>Einstellungen</b> → <b>Sicherheit und Datenschutz</b> → <b>Auto Blocker</b> ausschalten, die App installieren, danach Auto Blocker wieder einschalten.</p>
+    </details>
+    <details>
+      <summary>Ich finde die heruntergeladene Datei nicht</summary>
+      <p>App <b>Eigene Dateien</b> (Samsung) bzw. <b>Dateien</b> öffnen → <b>Downloads</b> → <b>obmanns-kinder.apk</b> antippen.</p>
+    </details>
+    <details>
+      <summary>Oben in der App ist eine Adressleiste zu sehen</summary>
+      <p>App ganz schließen und neu öffnen. Beim allerersten Start braucht Android manchmal einen Moment.</p>
+    </details>
+    <details>
+      <summary>Es geht trotzdem nicht</summary>
+      <p>Dann einfach im Browser spielen: <a href="/obmanns-kinder/">thomasachatz.github.io/obmanns-kinder</a> öffnen und anmelden. Funktioniert genauso.</p>
+    </details>
+  </section>
+
+  <h2>Noch Fragen?</h2>
+  <details>
+    <summary>Passwort vergessen</summary>
+    <p>Kurz dem Thomas schreiben, er setzt es dir neu.</p>
+  </details>
+  <details>
+    <summary>„Benutzername oder Passwort stimmt nicht“</summary>
+    <p>Benutzernamen klein schreiben und auf Leerzeichen am Ende achten (passiert beim Kopieren gern). Beim Passwort auf Groß- und Kleinschreibung achten.</p>
+  </details>
+  <details>
+    <summary>Wie funktioniert das Spiel?</summary>
+    <p>Unter <b>Spielen</b> forderst du jemanden zum Duell: 5 Fragen aus 5 Kategorien, 30 Sekunden pro Frage, ein 50:50-Joker. Du spielst zuerst, dann bekommt dein Gegner dieselben Fragen. Unter <b>Fragen</b> kannst du eigene Fragen hochladen, unter <b>Wissen</b> unnützes Wissen posten.</p>
+  </details>
+
+  <footer>Obmanns Kinder · Das Quiz unter uns.</footer>
+</main>
+<script>
+  (function () {
+    var ua = navigator.userAgent;
+    var isIOS = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    var isAndroid = /Android/i.test(ua);
+    var tabs = { ios: document.getElementById("tab-ios"), android: document.getElementById("tab-android") };
+    var panels = { ios: document.getElementById("ios"), android: document.getElementById("android") };
+
+    function show(which) {
+      for (var k in tabs) {
+        tabs[k].setAttribute("aria-selected", k === which ? "true" : "false");
+        panels[k].hidden = k !== which;
+      }
+    }
+    tabs.ios.onclick = function () { show("ios"); };
+    tabs.android.onclick = function () { show("android"); };
+
+    var detected = document.getElementById("detected");
+    if (isIOS) { show("ios"); detected.textContent = "Wir haben ein iPhone erkannt."; }
+    else if (isAndroid) { show("android"); detected.textContent = "Wir haben ein Android-Handy erkannt."; }
+    else { show("android"); detected.textContent = "Wähl oben aus, welches Handy du hast."; }
+
+    // iPhone, aber nicht Safari (z. B. WhatsApp-Browser, Chrome)
+    var inSafari = isIOS && /Safari/i.test(ua) && !/CriOS|FxiOS|EdgiOS|GSA|Instagram|FBAN|FBAV|WhatsApp/i.test(ua);
+    if (isIOS && !inSafari) document.getElementById("not-safari").hidden = false;
+
+    document.getElementById("copy-link").onclick = function (e) {
+      e.preventDefault();
+      var url = location.href.split("#")[0];
+      var btn = this;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(function () { btn.textContent = "Kopiert! Jetzt in Safari einfügen"; });
+      } else {
+        prompt("Link kopieren:", url);
+      }
+    };
+  })();
+</script>
+</body>
+</html>
